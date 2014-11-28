@@ -1,0 +1,81 @@
+<ion-view title="阅读话题">
+    <ion-nav-buttons side="right">
+        <a ng-click="newReplyButtonClick()" class="button button-icon icon ion-chatbubble-working"></a>
+    </ion-nav-buttons>
+    <ion-content class="has-header schoolnews-list">
+        <div class="card">
+            <div class="item item-text-wrap">
+                <h2> {{ topic.subject }}</h2>
+            </div>
+        </div>
+
+
+        <div class="list card">
+            <div class="item item-avatar">
+                <a href="#/user/info/{{ topic.author._id }}">
+                    <img src="{{ topic.author.avatar | avatarUri }}">
+                </a>
+
+                <h2>
+                    <a href="#/user/info/{{ topic.author._id }}">
+                        {{ topic.author.username }}
+                    </a>
+                    <button ng-click="report()" class="button button-small" style="float:right">报告不适当内容</button>
+                </h2>
+
+                <p>{{ topic.date | date:'yyyy-MM-dd HH:mm:ss' }} <span style="float:right">楼主</span></p>
+            </div>
+
+            <div ng-bind-html="topic.content | miniMarkdown" class="item item-body">
+
+            </div>
+        </div>
+
+        <hr/>
+
+        <ion-list class="custom-list">
+            <div ng-repeat="reply in replies">
+
+                <div class="list card">
+                    <div class="item item-avatar">
+                        <a href="#/user/info/{{ reply.author._id }}">
+                            <img src="{{ reply.author.avatar | avatarUri }}">
+                        </a>
+
+                        <h2>
+                            <a href="#/user/info/{{ reply.author._id }}">
+                                {{ reply.author.username }}
+                            </a>
+                        </h2>
+
+                        <p>{{ reply.date | date:'yyyy-MM-dd HH:mm:ss' }}
+                            <span style="float:right">#{{ reply.position }}</span></p>
+                    </div>
+
+                    <div ng-bind-html="reply.content | miniMarkdown" class="item item-body">
+
+                    </div>
+
+                    <!--<div class="item tabs tabs-secondary tabs-icon-left">-->
+                    <!--<a class="tab-item" href="#">-->
+                    <!--<i class="icon ion-thumbsup"></i>-->
+                    <!--Like-->
+                    <!--</a>-->
+                    <!--<a class="tab-item" href="#">-->
+                    <!--<i class="icon ion-chatbox"></i>-->
+                    <!--Comment-->
+                    <!--</a>-->
+                    <!--<a class="tab-item" href="#">-->
+                    <!--<i class="icon ion-share"></i>-->
+                    <!--Share-->
+                    <!--</a>-->
+                    <!--</div>-->
+
+                </div>
+
+            </div>
+        </ion-list>
+
+
+    </ion-content>
+</ion-view>

@@ -1,0 +1,38 @@
+<ion-view title="{{ viewTitle||'无标题(存在错误)' }}">
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <a ng-click="newTopicButtonClick()" class="button button-icon icon ion-compose"></a>
+    </ion-nav-buttons>
+    <ion-content class="has-header has-footer">
+        <ion-list class="custom-list" style="padding-bottom: 40px;">
+            <ion-item ng-repeat="item in list">
+                <a href="#/topic/single/{{item._id}}">{{item.subject}}
+                <div class="meta">
+                    <span>{{ item.author.username }}</span>
+                    <span class="float-right">{{ item.date | date:'yyyy-MM-dd HH:mm:ss' }}</span>
+                </div>
+                </a>
+            </ion-item>
+
+            <!--BUG： 如果不加这两个空item，最后一个主题会在footer下面-->
+            <!--<ion-item>-->
+                <!--<a></a>-->
+            <!--</ion-item>-->
+            <!--<ion-item>-->
+                <!--<a></a>-->
+            <!--</ion-item>-->
+
+        </ion-list>
+    </ion-content>
+
+</ion-view>
+
+<div class="bar bar-footer bar-stable">
+    <button ng-click="pageDown()" class="button button-clear button-icon icon ion-chevron-left"></button>
+    <div class="title">
+        <button class="button button-clear" ng-click="chooseCampusButtonClick()">{{ campusName }}</button>
+    </div>
+    <button ng-click="pageUp()" class="button button-clear button-icon icon ion-chevron-right"></button>
+</div>

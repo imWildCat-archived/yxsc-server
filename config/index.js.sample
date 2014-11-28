@@ -1,0 +1,52 @@
+/**
+ * 程序配置文件
+ */
+var baeConfig = require('./bae');
+var devConfig = require('./dev');
+var pkg = require('../package.json');
+var currentConfig;
+var isBae;
+
+// 检测环境是否为BAE
+if (process.env['BAE_ENV_APPID'] === undefined) {
+    currentConfig = devConfig;
+    isBae = false;
+} else {
+    currentConfig = baeConfig;
+    isBae = true;
+//    console.log('This is BAE');
+}
+
+
+module.exports = {
+    version: pkg.version,
+
+    db: currentConfig.db,
+    baeLogger: currentConfig.baeLogger,
+    sessionSecret: 'UIJMaGDi7pY',
+
+    isBae: isBae,
+
+    cronTime: {
+        updateSchoolNews: '*/30 * * * *'
+    },
+
+    mailService: {
+        stmp: {
+            service: 'QQex',
+            auth: {
+                user: 'foo',
+                pass: 'foo'
+            }
+        },
+        from: '印象·山财 <noreply@yinxiangshancai.com>'
+    },
+
+    tietukuService: {
+        accesskey: 'foo',
+        secretkey: 'foo',
+        album:foo
+    }
+
+
+};

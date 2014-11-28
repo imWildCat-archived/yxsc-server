@@ -1,0 +1,17 @@
+const BAE_AK = 'foo';
+const BAE_SK = 'foo';
+
+module.exports = {
+    db: {
+//        connectionString: 'mongodb://ORWQHCD61eZGTTFeFtC5Z0qt:r9aehxln8daspZ7AclPori1BiYldGxwU@mongo.duapp.com:8908/tYFnGNKnZUJmiEEBMCYX',
+        host: 'mongo.duapp.com',
+        name: 'foo',
+        port: 'foo',
+        user: BAE_AK,
+        pass: BAE_SK
+    },
+    baeLogger: {
+        user: BAE_AK,
+        passwd: BAE_SK
+    }
+};

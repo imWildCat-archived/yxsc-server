@@ -1,0 +1,16 @@
+<ion-view title="学校新闻">
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>
+    <ion-content class="has-header">
+        <ion-list class="custom-list">
+            <ion-item ng-repeat="item in newsList">
+                <a href="#/schoolNews/single/{{item._id}}">
+                    {{item.subject}}
+                    <p class="align-right">{{ item.editor }}</p>
+                </a>
+            </ion-item>
+        </ion-list>
+        <ion-infinite-scroll ng-if="!isLoading" on-infinite="loadMore()"></ion-infinite-scroll>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,33 @@
+<ion-view title="用户信息">
+    <ion-content class="has-header">
+
+        <div class="list card">
+
+            <div class="item item-avatar">
+                <img src="{{ user.avatar || 'img/no_avatar.png' }}">
+
+                <h2>{{ user.username }}</h2>
+                <p>{{ user.campus | campusName}}校区<span ng-if="user.gender === 2">的妹子</span><span ng-if="user.gender === 1">的汉子</span></p>
+                <p>积分: {{ user.money }}</p>
+                <p>贴子: {{ user.topicCount + user.replyCount }}</p>
+                <p>注册日期: {{ user.regDate | date:'yyyy-MM-dd HH:mm:ss'}}</p>
+                <p>上次登录: {{ user.lastLogin | date:'yyyy-MM-dd HH:mm:ss'}}</p>
+                <!--{{ isCurrentUser }}-->
+            </div>
+        </div>
+
+        <div ng-if="user">
+            <div class="list">
+                <a class="item item-icon-left" href="#/user/topic/{{user._id}}">
+                    <i class="icon ion-document-text"></i>
+                    <span ng-if="user.gender === 2">她</span><span ng-if="user.gender === 1">他</span><span ng-if="user.gender === 0">他</span>的话题
+                </a>
+
+                <a class="item item-icon-left" href="#/user/reply/{{user._id}}">
+                    <i class="icon ion-chatbubble-working"></i>
+                    <span ng-if="user.gender === 2">她</span><span ng-if="user.gender === 1">他</span><span ng-if="user.gender === 0">他</span>的回复
+                </a>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>
